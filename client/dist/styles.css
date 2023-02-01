@@ -1,0 +1,18 @@
+#body {
+  background:
+    linear-gradient(rgb(217, 151, 151), transparent),
+    linear-gradient(to top left, lime, transparent),
+    linear-gradient(to top right, blue, transparent);
+  background-blend-mode: screen;
+  height: 100%;
+  font-family: 'Comfortaa', cursive;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+h1 {
+  color: white
+}
