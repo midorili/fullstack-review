@@ -1,16 +1,42 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+
+mongoose.connect('mongodb://localhost/fetcher').then(err => {
+  if (err) {
+    console.log('error')
+  } else {
+    console.log('connected')
+  }
+})
 
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
+  owner: String,
+  name: String,
+  html_url: String,
+  stargazers_count: Number
+  //primary key field?
+
 });
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (/* TODO */) => {
+// let newRepo = new Repo({ owner: 'midorili', name: 'rpp2210-fullstack-review', html_url: 'https://github.com/midorili/rpp2210-fullstack-review', stargazers_count: 0 })
+
+let save = (/* TODO */repo) => {
+  let newRepo = new Repo({ owner: repo.owner.login, name: repo.name, html_url: repo.html_url, stargazers_count: repo.stargazers_count }).save((err, result) => {
+    if (err) {
+      console.log('error', err)
+    } else {
+      console.log('Successfully inserted')
+    }
+  })
+
   // TODO: Your code here
   // This function should save a repo or repos to
   // the MongoDB
 }
 
+// newRepo.save();
+//
 module.exports.save = save;
+module.exports.Repo = Repo;
