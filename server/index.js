@@ -34,8 +34,9 @@ app.get('/repos', function (req, res) {
   Repo.Repo.find({ owner: 'octocat' }).sort({ stargazers_count: 1 }).limit(25)
     .then(data => {
       console.log('data', data)
+      res.send(data)
+
     })
-  res.send('hi')
   // TODO - your code here!
   // This route should send back the top 25 repos
 });
