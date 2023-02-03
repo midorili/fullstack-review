@@ -17,7 +17,7 @@ const Search = ({ onSearch }) => {
   }
 
   return (
-    <div>
+    <div class="search">
       <h4>Add more repos!</h4>
       Enter a github username: <input value={term} onChange={onChange} />
       <button onClick={search}> Add Repos </button>

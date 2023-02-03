@@ -41,10 +41,10 @@ const App = () => {
   }
 
   return (
-    <div>
+    <div class="repo-master">
       <h1>Github Fetcher</h1>
-      <RepoList repos={repos} />
       <Search onSearch={search} />
+      <RepoList repos={repos} />
     </div>
   );
 }

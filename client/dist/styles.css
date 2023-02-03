@@ -14,5 +14,41 @@ body {
 }
 
 h1 {
-  color: white
+  display: inline-flex;
+  color: white;
+  padding-right: 20px;
+}
+
+.repo-list {
+  display: block;
+  flex-wrap: wrap;
+  border: 5px solid aqua;
+  border-radius: 15px;
+  border-collapse: separate;
+
+
+}
+
+#app {
+  display: inline-flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+}
+
+.repo-master {
+  display: inline-flex;
+  width: 100%;
+}
+
+.search {
+  padding-right: 20px;
+  position: relative;
+  padding-top: 50px;
+}
+
+.repos {
+  position: relative;
+  padding-top: 50px;
+  display: inline-block;
 }
