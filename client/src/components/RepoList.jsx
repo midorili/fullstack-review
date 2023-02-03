@@ -1,10 +1,19 @@
 import React from 'react';
+import RepoListEntry from '../components/RepoListEntry.jsx';
 
 const RepoList = ({ repos }) => (
-  <div>
+  <div className="repo-list">
     <h4> Repo List Component </h4>
-    There are {repos.length} repos.
-  </div>
+    Here are your {repos.length} repos:
+    {repos.map((repo) => (
+
+      <div>
+        < RepoListEntry repo={repo} />
+      </div>
+
+    ))}
+  </div >
+
 )
 
 export default RepoList;

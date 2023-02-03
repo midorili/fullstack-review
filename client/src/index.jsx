@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
 import RepoList from './components/RepoList.jsx';
+import RepoListEntry from './components/RepoListEntry.jsx';
+
 
 
 const App = () => {
@@ -17,9 +19,22 @@ const App = () => {
       url: 'http://localhost:1128/repos',
       data: {
         term: term
+
+      },
+      success: (dataTerm) => {
+        console.log('isItOctocat?', dataTerm)
+      }
+    })
+
+    $.ajax({
+      type: "GET",
+      url: 'http://localhost:1128/repos',
+      data: {
+        query: term
       },
       success: (data) => {
-        console.log('success', data)
+        console.log('successInGet', data)
+        setRepos(data)
       }
     })
 

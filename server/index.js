@@ -13,14 +13,16 @@ app.use(express.static(__dirname + '/../client/dist'));
 // Set up static file service for files in the `client/dist` directory.
 // Webpack is configured to generate files in that directory and
 // this server must serve those files when requested.
+let dataTerm = '';
 
 app.post('/repos', function (req, res) {
   // console.log('req.term', term)
   console.log('ok this is req', req.body)
   var term = req.body.term
+  dataTerm = term;
   // console.log('alright this is res', res)
   github.getReposByUsername(term)
-  res.send('Completed adding to MongoDB')
+  res.send(term)
 
   // TODO - your code here!
   // This route should take the github username provided
@@ -29,9 +31,9 @@ app.post('/repos', function (req, res) {
 });
 
 app.get('/repos', function (req, res) {
-  var term = req.body.term
-  console.log('repo', Repo)
-  Repo.Repo.find({ owner: 'octocat' }).sort({ stargazers_count: 1 }).limit(25)
+  // var term = req.body
+  // console.log('req', req)
+  Repo.Repo.find({ owner: dataTerm }).sort({ stargazers_count: 1 }).limit(25)
     .then(data => {
       console.log('data', data)
       res.send(data)
