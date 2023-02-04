@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Search from './components/Search.jsx';
@@ -11,6 +11,24 @@ const App = () => {
 
   const [repos, setRepos] = useState([]);
 
+  const pageLoad = () => {
+    $.ajax({
+      type: "GET",
+      url: 'http://localhost:1128/repos',
+      success: (data) => {
+        console.log('successInGet', data)
+        setRepos(data)
+      },
+      error: () => {
+        console.log('error')
+      }
+    })
+  }
+
+  useEffect(() => {
+    pageLoad();
+  }, repos)
+
 
   const search = (term) => {
     console.log(`${term} was searched`)
@@ -19,29 +37,21 @@ const App = () => {
       url: 'http://localhost:1128/repos',
       data: {
         term: term
-
       },
       success: (dataTerm) => {
         console.log('isItOctocat?', dataTerm)
-      }
-    })
-
-    $.ajax({
-      type: "GET",
-      url: 'http://localhost:1128/repos',
-      data: {
-        query: term
+        pageLoad();
       },
-      success: (data) => {
-        console.log('successInGet', data)
-        setRepos(data)
+      error: () => {
+        console.log('error')
       }
     })
 
   }
 
+
   return (
-    <div class="repo-master">
+    <div className="repo-master">
       <h1>Github Fetcher</h1>
       <Search onSearch={search} />
       <RepoList repos={repos} />

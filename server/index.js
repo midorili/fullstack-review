@@ -33,7 +33,7 @@ app.post('/repos', function (req, res) {
 app.get('/repos', function (req, res) {
   // var term = req.body
   // console.log('req', req)
-  Repo.Repo.find({ owner: dataTerm }).sort({ stargazers_count: 1 }).limit(25)
+  Repo.Repo.find().sort({ stargazers_count: -1 }).limit(25)
     .then(data => {
       console.log('data', data)
       res.send(data)

@@ -5,8 +5,14 @@ mongoose.connect('mongodb://localhost/fetcher', { useNewUrlParser: true, useUnif
 let repoSchema = mongoose.Schema({
   // TODO: your schema here!
   owner: String,
-  name: String,
-  html_url: String,
+  name: {
+    type: String,
+    unique: true
+  },
+  html_url: {
+    type: String,
+    unique: true
+  },
   stargazers_count: Number
   //primary key field?
 
