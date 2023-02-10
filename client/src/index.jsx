@@ -27,7 +27,7 @@ const App = () => {
 
   useEffect(() => {
     pageLoad();
-  }, repos)
+  }, [])
 
 
   const search = (term) => {

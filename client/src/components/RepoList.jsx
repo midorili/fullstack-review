@@ -9,7 +9,7 @@ const RepoList = ({ repos }) => {
       {repos.map((repo) => (
 
         <div>
-          < RepoListEntry repo={repo} />
+          < RepoListEntry key={repo._id} repo={repo} />
         </div>
 
       ))}

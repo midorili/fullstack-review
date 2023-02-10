@@ -28,10 +28,9 @@ let getReposByUsername = (username/* TODO */) => {
       var repo = data[i];
       db.save(data[i]);
     }
-
     //response save to DB
-
-
+  }).catch((error) => {
+    console.log('there has been an error', error)
   })
 
   //bottom works too
